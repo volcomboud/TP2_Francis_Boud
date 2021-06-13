@@ -5,17 +5,18 @@
 class Etudiants
 {
 private:
-    std::vector<unsigned short> tableau_notes;
-    std::string identifiant;
-    long matricule;
+	std::vector<unsigned short> tableau_notes;
+	std::string identifiant;
+	long matricule;
+	float moyennne;
 public:
-    Etudiants();
-    Etudiants(std::string un_identifiant, long un_matricule);
-    Etudiants (long un_matricule);
+	Etudiants();
+	Etudiants(std::string un_identifiant, long un_matricule);
+	Etudiants(long un_matricule);
 
-    void ajouterNote (unsigned short une_note);
-    void defile();
-    double calculerMoyenne();
-    bool operator<(const Etudiants& etudiant_a_droite) const;
+	void calculerMoyenne();
+	void ajouterNote(unsigned short une_note);
+	void defile();
+	float getMoyenne();
+	bool operator<(const Etudiants& etudiant_a_droite) const;
 };
-
