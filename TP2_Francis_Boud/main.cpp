@@ -35,13 +35,15 @@ int main() {
 			while (true) {                           //bloc while pour le deroulement des notes
 				flow_fichier >> une_note;
 				if (flow_fichier.fail()) {
-					if (cptr_nb_note != qte_note)elDestructor(arbre_eleve, un_matricule, cptr_ligne_etudiant, 0);
 					arbre_eleve[un_matricule].calculerMoyenne();
-
+					if (cptr_nb_note != qte_note) elDestructor(arbre_eleve, un_matricule, cptr_ligne_etudiant, 0);					
 					break;
 				}
 				if (une_note >= 0 && une_note <= 20)arbre_eleve[un_matricule].ajouterNote(une_note);
-				else elDestructor(arbre_eleve, un_matricule, cptr_ligne_etudiant, 1);
+				else {
+					elDestructor(arbre_eleve, un_matricule, cptr_ligne_etudiant, 1);
+					break;
+				}
 				cptr_nb_note++;
 			}
 			cptr_nb_note = 0; //reset le compteur pour que le 0 soit toujours saute dans la boucle
@@ -69,6 +71,7 @@ int main() {
 
 void elDestructor(std::map<long, Etudiants>& arbre, long& matricule, unsigned short& ligne_etudiant, int erreur)
 {
+	arbre.erase(matricule);
 	if (erreur) {
 		std::cout
 			<< "	#######################################################################################\n"
@@ -92,5 +95,5 @@ void elDestructor(std::map<long, Etudiants>& arbre, long& matricule, unsigned sh
 	std::cout << "\n\nL'etudiant ne sera pas enregistre dans le systeme.\n  ERREUR LIGNE : " << ligne_etudiant
 		<< "\n Faites \"Entrer\" pour continuer" << std::endl;
 	std::cin.get();
-	arbre.erase(matricule);
+	
 }
