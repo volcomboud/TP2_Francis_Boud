@@ -36,7 +36,7 @@ int main() {
 				flow_fichier >> une_note;
 				if (flow_fichier.fail()) {
 					arbre_eleve[un_matricule].calculerMoyenne();
-					if (cptr_nb_note != qte_note) elDestructor(arbre_eleve, un_matricule, cptr_ligne_etudiant, 0);					
+					if (cptr_nb_note != qte_note) elDestructor(arbre_eleve, un_matricule, cptr_ligne_etudiant, 0);
 					break;
 				}
 				if (une_note >= 0 && une_note <= 20)arbre_eleve[un_matricule].ajouterNote(une_note);
@@ -95,5 +95,4 @@ void elDestructor(std::map<long, Etudiants>& arbre, long& matricule, unsigned sh
 	std::cout << "\n\nL'etudiant ne sera pas enregistre dans le systeme.\n  ERREUR LIGNE : " << ligne_etudiant
 		<< "\n Faites \"Entrer\" pour continuer" << std::endl;
 	std::cin.get();
-	
 }
