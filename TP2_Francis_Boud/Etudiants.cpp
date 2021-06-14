@@ -12,7 +12,7 @@ Etudiants::Etudiants(std::string un_identifiant, long un_matricule) {
 void Etudiants::calculerMoyenne() {
 	float resultat;
 	unsigned short somme = 0;
-	for (int i = 0; i < tableau_notes.size(); i++) {
+	for (unsigned int i = 0; i < tableau_notes.size(); i++) {
 		somme += this->tableau_notes[i];
 	}
 	this->moyennne = (float)somme / tableau_notes.size();
